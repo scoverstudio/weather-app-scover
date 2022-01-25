@@ -4,9 +4,9 @@ import Loader from "../Loader/Loader";
 import { useCallback, useState } from "react";
 import ErrorBox from "../ErrorBox/ErrorBox";
 
-const WeatherBox = (props) => {
+const WeatherBox = () => {
   const apiKey = "7d452670b8af8080afe10d4b425a2af9";
-  const [weather, setWeather] = useState("");
+  const [weather, setWeather] = useState(null);
   const [pending, setPending] = useState(false);
   const [error, setError] = useState(false);
 
@@ -41,8 +41,8 @@ const WeatherBox = (props) => {
       {weather && pending === false && error === false && (
         <WeatherSummary weather={weather} />
       )}
-      {pending === true && <Loader />}
-      {error === true && <ErrorBox />}
+      {pending && <Loader />}
+      {error && <ErrorBox />}
     </section>
   );
 };
